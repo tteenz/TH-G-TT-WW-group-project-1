@@ -1,0 +1,39 @@
+.containHead {
+    width:98%;
+    margin:12px auto 12px auto;
+    Padding:15px 15px 15px 15px;
+    border-style: solid;
+    border-width: 5px;
+    border-radius: 5px;
+}
+.containHead h2 {
+    text-align: center;
+    font-size: 50px;
+    font-weight: 500;
+    margin:auto 0 auto 0;
+}
+
+.containMain {
+    width:98%;
+    margin:0px auto 12px auto;
+    Padding:15px 15px 15px 15px;
+    border-style: solid;
+    border-width: 5px;
+    border-radius: 5px; 
+}
+
+#mainHolder {
+    width:92%;
+    margin:45px auto 45px auto;
+    Padding:15px 15px 15px 15px;
+    border-style: solid;
+    border-width: 5px;
+    border-radius: 5px; 
+}
+.imgHolder {
+    Margin:12px;
+    border-style: solid;
+    border-width: 3px;
+    border-radius: 5px; 
+    z-index: 20;
+}
