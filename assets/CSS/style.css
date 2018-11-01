@@ -30,11 +30,9 @@
     border-width: 5px;
     border-radius: 5px; 
 }
-.imgHolder {
+.imgholder {
  
-    background-size: 100%;
-    opacity: .5;
-    background-color: rgba(0, 0, 0, .3);
+   margin:25px;
     border-style: solid;
     border-width: 3px;
     border-radius: 5px; 
@@ -46,7 +44,28 @@
     text-align: center;
     
 }
+.dialogStart{
+    margin:50px 50px 50px 50px ;
+}
+.mymodalStart {
+    width:500px;
+    height: 385px;
+    overflow: hidden;
+}
+.contentStart{
+    margin-top:100px ;
+}
  /*modal1*/
+
+ .dialogModal1{
+    margin:50px 50px 50px 50px ;
+    position: relative;
+    bottom:0;
+ }
+ .contentModal1{
+    margin-top:200px ;
+ 
+ }
 .forLocation {
     background-color: #e64a19 ;
     margin:12px auto 0px auto;
@@ -92,13 +111,15 @@
     text-align: center;   
 }
 .forLocation p {
-    font-size: 80px;
+    font-size: 50px;
     font-weight: 200;
 }
 .modal-header {
 text-align: center;
 }
 .backgroundImg{
-    background-image:url(../imagesexample/1523633513292.jpeg);
-    background-size:100%;
+
+    overflow: hidden;
+    background-image:url(../imagesexample/foodcollage.jpg);
+  
 }

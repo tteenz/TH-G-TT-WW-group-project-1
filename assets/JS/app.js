@@ -1,6 +1,12 @@
+var api = "https://developers.zomato.com/api/v2.1/categories"
+var apikey = "964d11c9e9159afba79051e5c707f40b"
+var query = "&q="
+var queryURL = "Atlanta";
 
+query = "q=Atlanta";
+queryURL = api + apikey + query; 
 
-var foodArr = ["sushi", "pizza", "mexican", "italian", "mediterranean", "hibachi", "healthy", "burger", "chinese"];
+var foodArr = ["sushi", "pizza food", "mexican food", "italian food", "mediterranean food", "hibachi food", "healthy food", "burger", "chinese food", "korean food"];
 var loserArr = [];
 var choiceNum = 0;
 var foodLength = foodArr.length;
@@ -75,6 +81,21 @@ $(document).on("click", "#leftImage", lFoodClick);
 $(document).ready(function(){
     $("#mymodalStart").modal();
     $("#mymodalStart").modal('open');
+    $.ajax({
+        beforeSend: function(request) {
+            request.setRequestHeader("user-key", "964d11c9e9159afba79051e5c707f40b");
+          },
+        //https://developers.zomato.com/api/v2.1/cities?q=Atlanta
+        url: "https://developers.zomato.com/api/v2.1/cities?&q=Atlanta",
+      
+        dataType: 'json',
+        async: false,
+        success: function (data) {
+            items = data
+        }     
+        
+    });
+    console.log(items);
 });
 
 $(document).on("click", "#startbtnClose", function closestartModal(){
@@ -88,3 +109,5 @@ function winnerforDinner() {
 $(document).on("click", "#btnforFood", function closestartModal(){
     $("#Mymodal1").modal('close');
 });
+
+
