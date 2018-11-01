@@ -9,13 +9,36 @@
         <!-- Materialize -->
         <link rel="stylesheet" href="assets/CSS/materilize/materialize.css">
         <!-- our style sheet -->
-        <link rel="stylesheet" href="assets/CSS/style.css">
+        <link rel="stylesheet" href="assets/CSS/style.css">                
         <title>Document</title>
-    </head>
-    <body>
+    </head>   
+    <body> 
+
+        <!-- Modal -->
+        <div id="mymodalStart" class="modal fade mymodalStart" role="dialog">
+                <div class="modal-dialog">
+                  <!-- Modal content-->
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      
+                      <h4 class="modal-title forstartModal">Welcome to Finder!</h4>
+                    </div>
+                    <div class="modal-body">
+                      <p>Hey there! Welcome to Finder! A food finder for when you're hungry but don't know what for? It's pretty simple hit the button below and swipe select the food that looks good to you! In the end will show you the restraunts near you that meet your tummy's desire!</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="startbtnClose" class="btn btn-primary  btnforFood" data-dismiss="modal">What are you hungry for?</button>
+                    </div>
+                  </div>
+              
+                </div>
+              </div>
+         
+      
+      <!--headeer-->
         <div class="container containHead #e64a19 deep-orange darken-2 z-depth-3">
             <div class="col s12 ">
-                <h2>Tinder for food</h2>
+                <h2>Finder</h2>
             </div>
             <!-- Page Content goes here -->
         </div>
@@ -24,20 +47,16 @@
 
                 <div class="container containImg">
                     <div class="row rowforImg">
-                        <div class="col s4 #9e9e9e grey imgHolder  z-depth-3" id="leftImage">
-
+                        <div class="col s4  z-depth-3">
+                            
+                            <img id="leftImage" src="" alt="food">
                             <br><br><br><br><br><br><br>left image<br><br><br><br><br><br><br><br>
-                            <button
-                                type="button"
-                                class="btn btn-info btn-lg"
-                                data-toggle="modal"
-                                data-target="#Mymodal1">Open Modal</button>
-                            <button id="clickforModal2">Modal2 Demo button</button>
+
 
                         </div>
 
-                        <div class="col s4 #9e9e9e grey imgHolder  z-depth-3" id="rightImage">
-
+                        <div class="col s4  z-depth-3">
+                            <img id="rightImage" src="" alt="food">
                             <br><br><br><br><br><br>right image<br><br><br><br><br><br><br><br><br>
                             <br><br>
 
@@ -56,30 +75,24 @@
             aria-labelledby="myLargeModalLabel"
             aria-hidden="true">
             <div class="modal-dialog modal-lg">
-                <div class="modal-content">
+                <div class="modal-content backgroundImg">
                     <div class="modal-header">
                         <h5 class="modal-title forName">Almost There!</h5>
-                        <div class="form-group">
 
-                            <input
-                                type="username"
-                                class="form-control"
-                                id="thisUsername"
-                                placeholder="Username">
-                        </div>
                     </div>
                     <div class="modal-body forLocation">
-                        <div class="form-group">
 
-                            <input
-                                type="username"
-                                class="form-control"
-                                id="thisUsername"
-                                placeholder="Username">
-                        </div>
                         <br>
                         <p>What city do you want to eat in?</p>
                         <br>
+                        <div class="form-group">
+
+                            <input
+                                type="username"
+                                class="form-control"
+                                id="thisUsername"
+                                placeholder="Username">
+                        </div>
                         <div class="form-group">
 
                             <input
@@ -91,8 +104,8 @@
                         <br>
                     </div>
                     <div class="modal-footer forCarosel">
-                        <button type="button" class="btn btn-primary btnforFood" data-dismiss="modal">Nothing Yet</button>
-                        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary  btnforFood" id ="btnforFood" data-dismiss="modal">Nothing Yet</button>
+                        
                     </div>
                 </div>
             </div>
@@ -109,3 +122,5 @@
 <script src="assets/JS/bootstrap/bootstrap.js"></script>
 <!-- materilize JS -->
 <script src="assets/JS/material/materialize.js"></script>
+<!-- materilize JS -->
+<script src="assets/JS/app.js"></script>
