@@ -28,7 +28,7 @@ var winner;
 function randomNum() {
 
     if(foodLength > 1) {
-        randomLFood = (Math.floor(Math.random() * foodArr.length));
+        randomLFood = (Math.floor(Math.random() * foodArr.length)); 
         
       leftimgFood = foodArr.splice(randomLFood,1);
       pusherLeft =leftimgFood.toString();
@@ -74,6 +74,7 @@ $(document).on("click", "#startbtnClose", function fullStart(){
     randomNum();
     resetImages();
     citysearch();
+    cuisinesearch()
 });
 
 $(document).on("click", "#rightImage", rFoodClick);
@@ -115,7 +116,7 @@ function citysearch(){
             request.setRequestHeader("user-key", "964d11c9e9159afba79051e5c707f40b");
           },
         
-        url: "https://developers.zomato.com/api/v2.1/cities?q="+city_fromIP,
+        url: "https://developers.zomato.com/api/v2.1/cities?lat="+latitude_fromIP+"&lon="+longitude_fromIP,
       
         dataType: 'json',
         async: false,
@@ -128,6 +129,25 @@ function citysearch(){
     console.log("entity_id" +entity_id);
 }
 
+function cuisinesearch(){
+    $.ajax({
+    beforeSend: function(request) {
+        request.setRequestHeader("user-key", "964d11c9e9159afba79051e5c707f40b");
+      },
+    
+    url: "https://developers.zomato.com/api/v2.1/cuisines?lat="+latitude_fromIP+"&lon="+longitude_fromIP,
+  
+    dataType: 'json',
+    async: false,
+    success: function (totals) {
+        listofcuisines = totals;
+    }     
+    
+});
+
+console.log(listofcuisines.cuisines[0].cuisine.cuisine_id);
+console.log(listofcuisines.cuisines[0].cuisine.cuisine_name);
+}
 
 
 $(document).on("click", "#startbtnClose", function closestartModal(){
@@ -148,19 +168,38 @@ $.ajax({
         request.setRequestHeader("user-key", "964d11c9e9159afba79051e5c707f40b");
       },
     
-    url: "https://developers.zomato.com/api/v2.1/search?entity_id="+ entity_id +"&entity_type=city&count=15&lat="+latitude_fromIP+"=&lon="+longitude_fromIP+"&radius=7000&cuisines="+winner,
+    url: "https://developers.zomato.com/api/v2.1/search?entity_id="+ entity_id +"&entity_type=city&count=15&lat="+latitude_fromIP+"=&lon="+longitude_fromIP+"&radius=7000&cuisines=6",
   
     dataType: 'json',
     async: false,
     success: function (data) {
         listofrestraunts = data;
-    }     
+    }    
+     
     
 });
-console.log(listofrestraunts);
+console.log(listofrestraunts.restaurants[0]);
 
 
 }
+
+function addtoTable(){
+    for(i=0; i<10; i++){
+        var tr = $("<tr>");
+        var rName =$("<td>").text(listofrestraunts.restaurants[i].restaurant.name);
+        var rRating =$("<td>").text(listofrestraunts.restaurants[i].restaurant.user_rating.aggregate_rating);
+        var rLocation =$("<td>").text(listofrestraunts.restaurants[i].restaurant.location.address);
+        tr.append(rName);
+        tr.append(rRating);
+        tr.append(rLocation);
+        $("#mytable").append(tr);
+    
+    }
+}
 $(document).on("click","#btnforFood",function() {
    callonforRestruants(); 
+   addtoTable();
+   $("#modalforTable").modal();
+    $("#modalforTable").modal('open');
 });
+  
