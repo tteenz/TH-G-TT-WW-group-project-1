@@ -7,11 +7,16 @@ var entity_id ="";
 var latitude_fromIP="";
 var longitude_fromIP="";
 var city_fromIP ="";
-
+var listofrestraunts =""
 //entity_id=288&entity_type=city&count=15&lat=33.5242&lon=-84.359&radius=7000&cuisines=BBQ
 
 
 var foodArr = ["sushi", "pizza food", "mexican food", "italian food", "mediterranean food", "hibachi food", "healthy food", "burger", "chinese food", "korean food"];
+var cusineOb = {};
+var newArr = [];
+var cuisineCont = {};
+var cusineNum = [];
+var cusineType = []; 
 var loserArr = [];
 var choiceNum = 0;
 var foodLength = foodArr.length;
@@ -28,20 +33,22 @@ var winner;
 function randomNum() {
 
     if(foodLength > 1) {
-        randomLFood = (Math.floor(Math.random() * foodArr.length)); 
-        
-      leftimgFood = foodArr.splice(randomLFood,1);
-      pusherLeft =leftimgFood.toString();
-        console.log(foodArr);
+        randomLFood = (Math.floor(Math.random() * newArr.length)); 
+        console.log(randomLFood);
+        //foodArr --> new Arr
+        //
+      pusherLeft = newArr.splice(randomLFood,1);
+     leftimgFood=newArr[randomLFood].cus;
+        console.log(newArr);
         console.log(leftimgFood);
-        randomRFood = (Math.floor(Math.random() * foodArr.length));
-        rightimgFood = foodArr.splice(randomRFood,1);
-        pusherRight =rightimgFood.toString();
+        randomRFood = (Math.floor(Math.random() * newArr.length));
+        pusherRight = newArr.splice(randomRFood,1);
+        rightimgFood=newArr[randomRFood].cus;
         console.log(rightimgFood);
-        console.log(foodArr);
+        console.log(newArr);
         
     } 
-     if (foodArr.length == 0){
+     if (newArr.length == 0){
         winnerforDinner();
         console.log(winner)
     }
@@ -57,14 +64,14 @@ function resetImages() {
 }
 
 function lFoodClick() {
-    foodArr.push(pusherLeft);
+    newArr.concat(pusherLeft);
     winner = leftimgFood;
     randomNum();
     resetImages();
 }
 
 function rFoodClick() {
-    foodArr.push(pusherRight);
+    newArr.concat(pusherRight);
     winner = rightimgFood;
     randomNum();
     resetImages();
@@ -74,7 +81,7 @@ $(document).on("click", "#startbtnClose", function fullStart(){
     randomNum();
     resetImages();
     citysearch();
-    cuisinesearch()
+   
 });
 
 $(document).on("click", "#rightImage", rFoodClick);
@@ -83,6 +90,7 @@ $(document).on("click", "#leftImage", lFoodClick);
 var access_key = '45163dc1f5e5d44d03509df23247aba3';
 //45163dc1f5e5d44d03509df23247aba3
 $(document).ready(function(){
+   
     $("#mymodalStart").modal();
     $("#mymodalStart").modal('open');
 
@@ -105,7 +113,7 @@ console.log(ipout);
     console.log(latitude_fromIP );
     console.log(longitude_fromIP);  
 
-
+    cuisinesearch();
 
 
 });
@@ -144,9 +152,22 @@ function cuisinesearch(){
     }     
     
 });
-
+console.log(listofcuisines)
 console.log(listofcuisines.cuisines[0].cuisine.cuisine_id);
 console.log(listofcuisines.cuisines[0].cuisine.cuisine_name);
+for(j =0; j<listofcuisines.cuisines.length; j=j +4){
+   // newarr=[{idhold:"blank",cuisinehold:"blank"}]
+var curId=listofcuisines.cuisines[j].cuisine.cuisine_id;
+var curCus =listofcuisines.cuisines[j].cuisine.cuisine_name
+
+newArr.push({id:curId,cus:curCus});
+
+
+   
+}
+
+console.log(newArr);
+
 }
 
 
@@ -168,7 +189,7 @@ $.ajax({
         request.setRequestHeader("user-key", "964d11c9e9159afba79051e5c707f40b");
       },
     
-    url: "https://developers.zomato.com/api/v2.1/search?entity_id="+ entity_id +"&entity_type=city&count=15&lat="+latitude_fromIP+"=&lon="+longitude_fromIP+"&radius=7000&cuisines=6",
+    url: "https://developers.zomato.com/api/v2.1/search?entity_id="+ entity_id +"&entity_type=city&count=15&lat="+latitude_fromIP+"=&lon="+longitude_fromIP+"&cuisines=6",
   
     dataType: 'json',
     async: false,
@@ -178,13 +199,13 @@ $.ajax({
      
     
 });
-console.log(listofrestraunts.restaurants[0]);
+console.log(listofrestraunts);
 
 
 }
 
 function addtoTable(){
-    for(i=0; i<10; i++){
+    for(i=0; i<listofrestraunts.restaurants.length; i++){
         var tr = $("<tr>");
         var rName =$("<td>").text(listofrestraunts.restaurants[i].restaurant.name);
         var rRating =$("<td>").text(listofrestraunts.restaurants[i].restaurant.user_rating.aggregate_rating);
@@ -198,7 +219,7 @@ function addtoTable(){
 }
 $(document).on("click","#btnforFood",function() {
    callonforRestruants(); 
-   addtoTable();
+  addtoTable();
    $("#modalforTable").modal();
     $("#modalforTable").modal('open');
 });
