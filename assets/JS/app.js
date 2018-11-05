@@ -7,13 +7,17 @@ var entity_id ="";
 var latitude_fromIP="";
 var longitude_fromIP="";
 var city_fromIP ="";
-var listofrestraunts =""
+var listofrestraunts ="";
+var cuisine_holder="";
 //entity_id=288&entity_type=city&count=15&lat=33.5242&lon=-84.359&radius=7000&cuisines=BBQ
 
 
+var ridWin ="";
+var lidWin = "";
 var foodArr = ["sushi", "pizza food", "mexican food", "italian food", "mediterranean food", "hibachi food", "healthy food", "burger", "chinese food", "korean food"];
 var cusineOb = {};
-var newArr = [];
+const newArr =[];
+var holderforNew = [1,2,3];
 var cuisineCont = {};
 var cusineNum = [];
 var cusineType = []; 
@@ -32,25 +36,35 @@ var winner;
 
 function randomNum() {
 
-    if(foodLength > 1) {
-        randomLFood = (Math.floor(Math.random() * newArr.length)); 
-        console.log(randomLFood);
+    if((newArr.length -1)>1) {
+        var lengthtoUse= newArr.length -1;
+       //console.log(lengthtoUse);
+        randomLFood = (Math.floor(Math.random() * lengthtoUse)); 
+        //console.log(randomLFood);
         //foodArr --> new Arr
         //
       pusherLeft = newArr.splice(randomLFood,1);
+      var lengthtoUse2 =newArr.length -1;
+     // console.log(lengthtoUse2);
      leftimgFood=newArr[randomLFood].cus;
-        console.log(newArr);
-        console.log(leftimgFood);
-        randomRFood = (Math.floor(Math.random() * newArr.length));
+     lidWin =newArr[randomLFood].id;
+        //console.log(newArr);
+        //console.log(leftimgFood);
+        randomRFood = (Math.floor(Math.random() * lengthtoUse2));
+        //console.log(randomRFood);
         pusherRight = newArr.splice(randomRFood,1);
         rightimgFood=newArr[randomRFood].cus;
-        console.log(rightimgFood);
-        console.log(newArr);
+        ridWin =newArr[randomRFood].id;
+        //console.log(rightimgFood);
+        //console.log(newArr);
+        //console.log(winner);
         
-    } 
-     if (newArr.length == 0){
+    } else {
         winnerforDinner();
-        console.log(winner)
+        console.log(winner);
+        console.log(cuisine_holder);
+        console.log(rightimgFood);
+        console.log(leftimgFood);
     }
     
 }
@@ -65,14 +79,16 @@ function resetImages() {
 
 function lFoodClick() {
     newArr.concat(pusherLeft);
-    winner = leftimgFood;
+    winner = lidWin;
+    cuisine_holder =winner;
     randomNum();
     resetImages();
 }
 
 function rFoodClick() {
     newArr.concat(pusherRight);
-    winner = rightimgFood;
+    winner = ridWin;
+    cuisine_holder=winner;
     randomNum();
     resetImages();
 }
@@ -90,7 +106,7 @@ $(document).on("click", "#leftImage", lFoodClick);
 var access_key = '45163dc1f5e5d44d03509df23247aba3';
 //45163dc1f5e5d44d03509df23247aba3
 $(document).ready(function(){
-   
+    console.log(newArr);
     $("#mymodalStart").modal();
     $("#mymodalStart").modal('open');
 
@@ -152,9 +168,7 @@ function cuisinesearch(){
     }     
     
 });
-console.log(listofcuisines)
-console.log(listofcuisines.cuisines[0].cuisine.cuisine_id);
-console.log(listofcuisines.cuisines[0].cuisine.cuisine_name);
+
 for(j =0; j<listofcuisines.cuisines.length; j=j +4){
    // newarr=[{idhold:"blank",cuisinehold:"blank"}]
 var curId=listofcuisines.cuisines[j].cuisine.cuisine_id;
@@ -163,7 +177,7 @@ var curCus =listofcuisines.cuisines[j].cuisine.cuisine_name
 newArr.push({id:curId,cus:curCus});
 
 
-   
+
 }
 
 console.log(newArr);
@@ -189,7 +203,7 @@ $.ajax({
         request.setRequestHeader("user-key", "964d11c9e9159afba79051e5c707f40b");
       },
     
-    url: "https://developers.zomato.com/api/v2.1/search?entity_id="+ entity_id +"&entity_type=city&count=15&lat="+latitude_fromIP+"=&lon="+longitude_fromIP+"&cuisines=6",
+    url: "https://developers.zomato.com/api/v2.1/search?entity_id="+ entity_id +"&entity_type=city&count=15&lat="+latitude_fromIP+"=&lon="+longitude_fromIP+"&cuisines="+cuisine_holder,
   
     dataType: 'json',
     async: false,
