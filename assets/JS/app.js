@@ -1,3 +1,6 @@
+//firebase
+
+
 
 var api = "https://developers.zomato.com/api/v2.1/categories"
 var apikey = "964d11c9e9159afba79051e5c707f40b"
@@ -9,6 +12,9 @@ var longitude_fromIP="";
 var city_fromIP ="";
 var listofrestraunts ="";
 var cuisine_holder="";
+var cuisine_nameholder ="";
+var rnameWin ="";
+var lnameWin ="";
 //entity_id=288&entity_type=city&count=15&lat=33.5242&lon=-84.359&radius=7000&cuisines=BBQ
 
 var imgtopasteL ='';
@@ -73,7 +79,7 @@ function randomNum() {
      $("#leftImage").attr("src", imgtopasteL.hits[0].largeImageURL);
     
      lidWin =newArr[randomLFood].id;
-       
+     lnameWin =newArr[randomLFood].cus;
 
      //right
         randomRFood = (Math.floor(Math.random() * lengthtoUse2));
@@ -85,9 +91,9 @@ function randomNum() {
         console.log(rightimgFood);
         grabImgR();
         $("#rightImage").attr("src", imgtopasteR.hits[0].largeImageURL);
-        console.log(imgtopasteR.hits[0].largeImageURL);
+       console.log(imgtopasteR.hits[0].largeImageURL);
         ridWin =newArr[randomRFood].id;
-
+        rnameWin =newArr[randomRFood].cus;
         
     } else {
         winnerforDinner();
@@ -108,7 +114,7 @@ function lFoodClick() {
     newArr.concat(pusherLeft);
     winner = lidWin;
     cuisine_holder =winner;
-    
+    cuisine_nameholder =lnameWin;
     $(".rightWord").text("");
     $(".leftWord").text("");
     $("#leftImage").attr("src", "");
@@ -122,7 +128,7 @@ function rFoodClick() {
     newArr.concat(pusherRight);
     winner = ridWin;
     cuisine_holder=winner;
-    
+    cuisine_nameholder =rnameWin;
     $(".rightWord").text("");
     $(".leftWord").text("");
     $("#leftImage").attr("src", "");
@@ -131,11 +137,23 @@ function rFoodClick() {
     //randomNum();
     //resetImages();
 }
+$(document).on("click", ".wanttoReset", function(){
+    console.log("clicked");
+  
 
-$(document).on("click", "#startbtnClose", function fullStart(){
+    cuisinesearch();
+    console.log(newArr);
+    randomNum();
+    //resetImages();
+  
+   
+});
+$(document).on("click", "#startbtnClose", function(){
     randomNum();
     //resetImages();
     citysearch();
+    
+
    
 });
 
@@ -308,8 +326,7 @@ function addtoTable(){
         tr.append(rLocation);
         $("#mytable").append(tr);
     
-    }
-}
+    }}
 $(document).on("click","#btnforFood",function() {
    
   addtoTable();
