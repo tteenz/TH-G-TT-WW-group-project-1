@@ -11,7 +11,8 @@ var listofrestraunts ="";
 var cuisine_holder="";
 //entity_id=288&entity_type=city&count=15&lat=33.5242&lon=-84.359&radius=7000&cuisines=BBQ
 
-
+var imgtopasteL ='';
+var imgtopasteR ='';
 var ridWin ="";
 var lidWin = "";
 var foodArr = ["sushi", "pizza food", "mexican food", "italian food", "mediterranean food", "hibachi food", "healthy food", "burger", "chinese food", "korean food"];
@@ -31,71 +32,107 @@ var randomRFood = 0;
  var pusherLeft = '';
  var pusherRight = '';
 var winner;
-// randomNum();
 
+// function deleter(){
+//     for(y=0;y>(newArr.length -1);y++){
+//         $.ajax({
+//             url: "https://pixabay.com/api/?username=hutwagnert&key=1631539-10605044-f5529b1c76ff6ff923f9878bd&q=" + newArr[y] + "&image_type=photo&per_page=3&category=food",
+//             async:false,
+//             success: function(responseL) {
+              
+//               imgtopasteL =responseL;
+//             },
+//             error: function(responseL) {
+//               console.log(responseL);
+//             }
+            
+//           })
+          
+    
+// }}
 
 function randomNum() {
 
     if((newArr.length -1)>1) {
+
+        //left
         var lengthtoUse= newArr.length -1;
-       //console.log(lengthtoUse);
+    
         randomLFood = (Math.floor(Math.random() * lengthtoUse)); 
-        //console.log(randomLFood);
-        //foodArr --> new Arr
-        //
+        
       pusherLeft = newArr.splice(randomLFood,1);
       var lengthtoUse2 =newArr.length -1;
-     // console.log(lengthtoUse2);
+     
      leftimgFood=newArr[randomLFood].cus;
+    
+     console.log(leftimgFood);
+     grabImgL();//create imtopaste
+     
+    $(".leftWord").text(leftimgFood);
+     $("#leftImage").attr("src", imgtopasteL.hits[0].largeImageURL);
+    
      lidWin =newArr[randomLFood].id;
-        //console.log(newArr);
-        //console.log(leftimgFood);
+       
+
+     //right
         randomRFood = (Math.floor(Math.random() * lengthtoUse2));
-        //console.log(randomRFood);
+      
         pusherRight = newArr.splice(randomRFood,1);
         rightimgFood=newArr[randomRFood].cus;
+        $(".rightWord").text(rightimgFood);
+        console.log(rightimgFood);
+        grabImgR();
+        $("#rightImage").attr("src", imgtopasteR.hits[0].largeImageURL);
+        console.log(imgtopasteR.hits[0].largeImageURL);
         ridWin =newArr[randomRFood].id;
-        //console.log(rightimgFood);
-        //console.log(newArr);
-        //console.log(winner);
+
         
     } else {
         winnerforDinner();
-        console.log(winner);
-        console.log(cuisine_holder);
-        console.log(rightimgFood);
-        console.log(leftimgFood);
+        callonforRestruants(); 
+
     }
     
 }
 
 function resetImages() {
-
-    document.getElementById("leftImage").src="";
-    document.getElementById("leftImage").alt=leftimgFood;
-    document.getElementById("rightImage").src="";
-    document.getElementById("rightImage").alt=rightimgFood;
+    $(".rightWord").text("");
+    $(".leftWord").text("");
+    $("#leftImage").attr("src", "");
+    $("#rightImage").attr("src", "");
 }
 
 function lFoodClick() {
     newArr.concat(pusherLeft);
     winner = lidWin;
     cuisine_holder =winner;
-    randomNum();
-    resetImages();
+    
+    $(".rightWord").text("");
+    $(".leftWord").text("");
+    $("#leftImage").attr("src", "");
+    $("#rightImage").attr("src", "");
+    setTimeout(randomNum, 100);
+    //randomNum();
+    //resetImages();
 }
 
 function rFoodClick() {
     newArr.concat(pusherRight);
     winner = ridWin;
     cuisine_holder=winner;
-    randomNum();
-    resetImages();
+    
+    $(".rightWord").text("");
+    $(".leftWord").text("");
+    $("#leftImage").attr("src", "");
+    $("#rightImage").attr("src", "");
+    setTimeout(randomNum, 100);
+    //randomNum();
+    //resetImages();
 }
 
 $(document).on("click", "#startbtnClose", function fullStart(){
     randomNum();
-    resetImages();
+    //resetImages();
     citysearch();
    
 });
@@ -104,11 +141,12 @@ $(document).on("click", "#rightImage", rFoodClick);
 $(document).on("click", "#leftImage", lFoodClick);
 
 var access_key = '45163dc1f5e5d44d03509df23247aba3';
-//45163dc1f5e5d44d03509df23247aba3
+
 $(document).ready(function(){
-    console.log(newArr);
+    
     $("#mymodalStart").modal();
     $("#mymodalStart").modal('open');
+   
 
 //ip address finder
     $.ajax({
@@ -125,14 +163,53 @@ $(document).ready(function(){
     latitude_fromIP=ipout.latitude;
 longitude_fromIP=ipout.longitude;
 city_fromIP = ipout.city;
-console.log(ipout);
-    console.log(latitude_fromIP );
-    console.log(longitude_fromIP);  
+
 
     cuisinesearch();
 
 
 });
+
+function grabImgL(){ 
+    $.ajax({
+    url: "https://pixabay.com/api/?username=hutwagnert&key=1631539-10605044-f5529b1c76ff6ff923f9878bd&q=" + leftimgFood + "&image_type=photo&per_page=3&category=food",
+    async:false,
+    success: function(responseL) {
+      
+      imgtopasteL =responseL;
+    },
+    error: function(responseL) {
+      console.log(responseL);
+    }
+    
+    
+  })
+  if(imgtopasteL.hits.length == 0){
+randomNum();
+  } else 
+console.log(imgtopasteL);
+}
+
+
+  function grabImgR(){
+    $.ajax({
+    url: "https://pixabay.com/api/?username=hutwagnert&key=1631539-10605044-f5529b1c76ff6ff923f9878bd&q=" + rightimgFood + "&image_type=photo&per_page=3&category=food",
+    async:false,
+    success: function(responseR) {
+     
+      imgtopasteR =responseR;   
+    },
+    error: function(responseR) {
+      console.log(responseR);
+    }
+ })
+  if(imgtopasteR.hits.length == 0){
+randomNum();      
+  } else {} 
+console.log(imgtopasteR)
+}
+console.log(imgtopasteR)
+
 
 function citysearch(){
         $.ajax({
@@ -150,7 +227,7 @@ function citysearch(){
         
     });
     entity_id = items.location_suggestions[0].id
-    console.log("entity_id" +entity_id);
+   
 }
 
 function cuisinesearch(){
@@ -176,11 +253,11 @@ var curCus =listofcuisines.cuisines[j].cuisine.cuisine_name
 
 newArr.push({id:curId,cus:curCus});
 
-
+//[{id,cus},{id,cus},]
 
 }
 
-console.log(newArr);
+
 
 }
 
@@ -193,7 +270,7 @@ function winnerforDinner() {
     $("#Mymodal1").modal();
     $("#Mymodal1").modal('open');
 }
-$(document).on("click", "#btnforFood", function closestartModal(){
+$("#btnforFood").click (function closestartModal(){
     $("#Mymodal1").modal('close');
 });
 
@@ -213,7 +290,7 @@ $.ajax({
      
     
 });
-console.log(listofrestraunts);
+
 
 
 }
@@ -232,7 +309,7 @@ function addtoTable(){
     }
 }
 $(document).on("click","#btnforFood",function() {
-   callonforRestruants(); 
+   
   addtoTable();
    $("#modalforTable").modal();
     $("#modalforTable").modal('open');
