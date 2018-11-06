@@ -61,6 +61,7 @@ function randomNum() {
         randomLFood = (Math.floor(Math.random() * lengthtoUse)); 
         
       pusherLeft = newArr.splice(randomLFood,1);
+      
       var lengthtoUse2 =newArr.length -1;
      
      leftimgFood=newArr[randomLFood].cus;
@@ -78,6 +79,7 @@ function randomNum() {
         randomRFood = (Math.floor(Math.random() * lengthtoUse2));
       
         pusherRight = newArr.splice(randomRFood,1);
+        
         rightimgFood=newArr[randomRFood].cus;
         $(".rightWord").text(rightimgFood);
         console.log(rightimgFood);
