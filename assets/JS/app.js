@@ -71,7 +71,7 @@ function randomNum() {
       var lengthtoUse2 =newArr.length -1;
      
      leftimgFood=newArr[randomLFood].cus;
-    
+    console.log("before L" +newArr.length);
      console.log(leftimgFood);
      grabImgL();//create imtopaste
      
@@ -88,6 +88,7 @@ function randomNum() {
         
         rightimgFood=newArr[randomRFood].cus;
         $(".rightWord").text(rightimgFood);
+        console.log("before R" +newArr.length);
         console.log(rightimgFood);
         grabImgR();
         $("#rightImage").attr("src", imgtopasteR.hits[0].largeImageURL);
@@ -97,10 +98,12 @@ function randomNum() {
         
     } else {
         winnerforDinner();
+        hider();
         callonforRestruants(); 
 
+
     }
-    
+    console.log("afterboth" +newArr.length);
 }
 
 function resetImages() {
@@ -144,6 +147,7 @@ $(document).on("click", ".wanttoReset", function(){
     cuisinesearch();
     console.log(newArr);
     randomNum();
+    shower();
     //resetImages();
   
    
@@ -152,6 +156,7 @@ $(document).on("click", "#startbtnClose", function(){
     randomNum();
     //resetImages();
     citysearch();
+    shower();
     
 
    
@@ -166,6 +171,7 @@ $(document).ready(function(){
     
     $("#mymodalStart").modal();
     $("#mymodalStart").modal('open');
+    hider();
    
 
 //ip address finder
@@ -279,6 +285,14 @@ newArr.push({id:curId,cus:curCus});
 
 
 
+}
+function hider(){
+    $("#mainHolder").hide();
+    $("#contsmallScreen").hide();
+}
+function shower(){
+    $("#mainHolder").show();
+    $("#contsmallScreen").show();
 }
 
 

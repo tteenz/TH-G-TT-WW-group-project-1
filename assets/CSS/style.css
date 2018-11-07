@@ -85,6 +85,10 @@
     border-width: 5px;
     border-radius: 5px; 
 }
+#logo {
+    width:75px;
+    height:50px;
+}
 /*start modal*/
 .forstartModal {
     text-align: center;
@@ -97,6 +101,8 @@
     width:500px;
     height: 385px;
     overflow: hidden;
+    margin-left: auto !important;
+    margin-right:auto !important;
 }
 .contentStart{
     margin-top:100px ;
@@ -110,6 +116,8 @@
  }
  .contentModal1{
     margin-top:100px ;
+    margin-left: auto !important;
+    margin-right:auto !important;
  
  }
 .forLocation {
@@ -169,10 +177,10 @@ margin: 0 50px 0 50px;
 .footerbtmModal{
     position: relative;
 }
-#wanttoReset{
+.wanttoReset{
 position: absolute;   
-margin-left: auto !important;
-margin-right:auto !important;
+left:30%;
+right:30%;
 }
 #seeoldSearch{
     position: absolute;
@@ -208,6 +216,16 @@ td, th {
 tr:nth-child(even) {
     background-color: #ffccbc;
 }
+.modalthisTable {
+    overflow: hidden;
+}
+.orthisTable{
+    overflow: hidden;
+}
+.thisbetheTable {
+    width:100%;
+
+}
 
 @media only screen and (max-width: 760px) {
 .rowforImg {
@@ -215,5 +233,65 @@ tr:nth-child(even) {
 }
 .contsmallScreen{
     display: block;
+    width:100%;
+    padding: 0 0 0 0;   
+    margin-left: auto !important;
+    margin-right:auto !important;
 }
+.imgholder {
+    margin-left: auto !important;
+    margin-right:auto !important;
+    padding: 0 0 0 0;   
+}
+.containImg {
+    width:100%;
+    padding:0 0 0 0;
+}
+.mymodalStart {
+    width:350px;
+    height: 460px;
+    overflow: hidden;
+    margin-left: auto !important;
+    margin-right:auto !important;
+}
+.btnforStart {
+    position: relative;
+    left:12.5%;
+    background-color: #e64a19 ;
+    color:black;
+    margin-left: auto !important;
+    margin-right:auto !important;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 5px;
+    text-align: center; 
+}
+.btnforFood {
+    background-color: #e64a19 ;
+    color:black;
+    margin-left: auto !important;
+    margin-right:auto !important;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 5px;
+    text-align: center; 
+}
+.contentModal1{
+    margin-top:100px ;
+   width:100%;
+   padding:0 0 0 0;
+ 
+ }
+ .dialogModal1 {
+     margin:50px 5px 50px 5px;
+     height:320px;
+ }
+ .backgroundImg {
+    height:320px; 
+ }
+ .wanttoReset{
+     position: relative;
+     left:13%;
+ }
+ 
 }
