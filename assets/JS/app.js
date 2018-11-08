@@ -59,40 +59,45 @@ var winner;
 
 function randomNum() {
 
-    if((newArr.length -1)>1) {
-
+    if((newArr.length-1)>1) {
+        console.log(newArr);
         //left
-        var lengthtoUse= newArr.length -1;
+        var lengthtoUse= newArr.length-1;
     
         randomLFood = (Math.floor(Math.random() * lengthtoUse)); 
-        
+        console.log(lengthtoUse);
+        console.log(randomLFood);
+        leftimgFood=newArr[randomLFood].cus;
       pusherLeft = newArr.splice(randomLFood,1);
-      
-      var lengthtoUse2 =newArr.length -1;
+      console.log("1st in L");
+      console.log(newArr);
+      var lengthtoUse2 =newArr.length-1;
      
-     leftimgFood=newArr[randomLFood].cus;
-    console.log("before L" +newArr.length);
+     
+    console.log("before L" )
+    console.log(newArr);
      console.log(leftimgFood);
-     grabImgL();//create imtopaste
+   // grabImgL();//create imtopaste UNCOMMENT
      
     $(".leftWord").text(leftimgFood);
-     $("#leftImage").attr("src", imgtopasteL.hits[0].largeImageURL);
+ // $("#leftImage").attr("src", imgtopasteL.hits[0].largeImageURL); UNCOMMENT
     
      lidWin =newArr[randomLFood].id;
      lnameWin =newArr[randomLFood].cus;
 
      //right
         randomRFood = (Math.floor(Math.random() * lengthtoUse2));
-      
+        rightimgFood=newArr[randomRFood].cus;
         pusherRight = newArr.splice(randomRFood,1);
         
-        rightimgFood=newArr[randomRFood].cus;
+        
         $(".rightWord").text(rightimgFood);
-        console.log("before R" +newArr.length);
-        console.log(rightimgFood);
-        grabImgR();
-        $("#rightImage").attr("src", imgtopasteR.hits[0].largeImageURL);
-       console.log(imgtopasteR.hits[0].largeImageURL);
+        console.log("before R" )
+        console.log(newArr);
+        //console.log(rightimgFood); UNCOMMENT
+      // grabImgR(); UNCOMMENT
+     //$("#rightImage").attr("src", imgtopasteR.hits[0].largeImageURL); UNCOMMENT
+    //console.log(imgtopasteR.hits[0].largeImageURL); UNCOMMENT
         ridWin =newArr[randomRFood].id;
         rnameWin =newArr[randomRFood].cus;
         
@@ -103,7 +108,8 @@ function randomNum() {
 
 
     }
-    console.log("afterboth" +newArr.length);
+    console.log("afterboth" );
+    console.log(newArr);
 }
 
 function resetImages() {
@@ -190,6 +196,8 @@ $(document).ready(function(){
 longitude_fromIP=ipout.longitude;
 city_fromIP = ipout.city;
 
+console.log(latitude_fromIP);
+
 
     cuisinesearch();
 
@@ -198,7 +206,7 @@ city_fromIP = ipout.city;
 
 function grabImgL(){ 
     $.ajax({
-    url: "https://pixabay.com/api/?username=hutwagnert&key=1631539-10605044-f5529b1c76ff6ff923f9878bd&q=" + leftimgFood + "&image_type=photo&per_page=3&category=food",
+    url: "https://pixabay.com/api/?username=dabespishthing&key=10627645-90d2be0d94e4940ab741bc1a5&q=" + leftimgFood + "&image_type=photo&per_page=3&category=food",
     async:false,
     success: function(responseL) {
       
@@ -219,7 +227,7 @@ console.log(imgtopasteL);
 
   function grabImgR(){
     $.ajax({
-    url: "https://pixabay.com/api/?username=hutwagnert&key=1631539-10605044-f5529b1c76ff6ff923f9878bd&q=" + rightimgFood + "&image_type=photo&per_page=3&category=food",
+    url: "https://pixabay.com/api/?username=dabespishthing&key=10627645-90d2be0d94e4940ab741bc1a5&q=" + rightimgFood + "&image_type=photo&per_page=3&category=food",
     async:false,
     success: function(responseR) {
      
@@ -271,7 +279,7 @@ function cuisinesearch(){
     }     
     
 });
-
+console.log(listofcuisines);
 for(j =0; j<listofcuisines.cuisines.length; j=j +4){
    // newarr=[{idhold:"blank",cuisinehold:"blank"}]
 var curId=listofcuisines.cuisines[j].cuisine.cuisine_id;
@@ -287,12 +295,12 @@ newArr.push({id:curId,cus:curCus});
 
 }
 function hider(){
-    $("#mainHolder").hide();
-    $("#contsmallScreen").hide();
+    $(".imgholder").hide();
+
 }
 function shower(){
-    $("#mainHolder").show();
-    $("#contsmallScreen").show();
+    $(".imgholder").show();
+  
 }
 
 
@@ -334,10 +342,12 @@ function addtoTable(){
         var tr = $("<tr>");
         var rName =$("<td>").text(listofrestraunts.restaurants[i].restaurant.name);
         var rRating =$("<td>").text(listofrestraunts.restaurants[i].restaurant.user_rating.aggregate_rating);
-        var rLocation =$("<td>").text(listofrestraunts.restaurants[i].restaurant.location.address);
+        var rLocation =$("<td>").text(listofrestraunts.restaurants[i].restaurant.location.address).addClass("mytableClicker").attr('id',i);
+        var ID = $(this).attr('id',i);
         tr.append(rName);
         tr.append(rRating);
         tr.append(rLocation);
+     //   document.getElementById("#i").innerHTML = "https://www.google.com/search?safe=active&q="+listofrestraunts.restaurants[i].restaurant.location.address+"&spell=1&sa=X&ved=0ahUKEwim87G2-sPeAhWOJ3wKHYTgBOQQBQgwKAA&biw=1920&bih=969";
         $("#mytable").append(tr);
     
     }}
@@ -347,4 +357,8 @@ $(document).on("click","#btnforFood",function() {
    $("#modalforTable").modal();
     $("#modalforTable").modal('open');
 });
+$(document).on("click",".mytableClicker",function() {
+   
+ console.log($(this));
+  });
   

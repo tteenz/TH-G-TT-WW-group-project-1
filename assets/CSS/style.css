@@ -2,8 +2,7 @@
     width:98%;
     margin:12px auto 12px auto;
     Padding:15px 15px 15px 15px;
-    border-style: solid;
-    border-width: 5px;
+    border: 5px solid white;
     border-radius: 5px;
 }  
 .containHead h2 {
@@ -21,8 +20,7 @@
     width:98%;
     margin:0px auto 12px auto;
     Padding:15px 15px 15px 15px;
-    border-style: solid;
-    border-width: 5px;
+    border: 5px solid white;
     border-radius: 5px; 
 }
 
@@ -30,9 +28,8 @@
     width:92%;
     margin:45px auto 45px auto;
     Padding:15px 15px 15px 15px;
-    border-style: solid;
-    border-width: 5px;
     border-radius: 5px; 
+    border: 5px solid #dddddd;
 }
 #leftImage{
     flex-shrink: 0;
@@ -52,9 +49,8 @@
     justify-content: center;
     align-items: center;
     overflow: hidden;
-   margin:25px;
-    border-style: solid;
-    border-width: 3px;
+    margin:25px;
+    border: .5px solid;
     border-radius: 5px; 
     z-index: 0;
     
@@ -66,10 +62,9 @@
     width:100%;
     text-align: center;
     z-index:100;
-    background-color: #4aaaa5;
+    background-color: #0B3954;
     color: #fff;
-    border-style: solid;
-    border-width: 5px;
+    border: 5px solid white;
     border-radius: 5px; 
 }
 .leftWord{
@@ -79,10 +74,9 @@
     width:100%;
     text-align: center;
     z-index:100;
-    background-color: #4aaaa5;
+    background-color: #0B3954;
     color: #fff;
-    border-style: solid;
-    border-width: 5px;
+    border: 5px solid white;
     border-radius: 5px; 
 }
 #logo {
@@ -110,7 +104,10 @@
  /*modal1*/
 
  .dialogModal1{
-    margin:50px 50px 50px 50px ;
+    margin-top: 50px ;
+    margin-bottom: 50px;
+    margin-left: auto !important;
+    margin-right:auto !important;
     position: relative;
     bottom:0;
  }
@@ -122,18 +119,16 @@
  }
 .forLocation {
     width:100%;
-    background-color: #e64a19 ;
+    background-color: #FE5F55 ;
     margin:12px auto 0px auto;
-    border-style: solid;
-    border-width: 5px;
+    border: 5px solid lightgray;
     border-radius: 5px;
     text-align: center;
 }
 .forName {
     margin:auto 25%;
     background-color: #fafafa;
-    border-style: solid;
-    border-width: 3px;
+    border: 3px solid white;
     border-radius: 5px;
     font-size:60px;
     font-weight: 200; 
@@ -141,36 +136,32 @@
 .forCarosel {
     
     background-color: #fafafa; 
-    border-style: solid;
-    border-width: 5px;
+    border: 5px solid white;
     border-radius: 5px;
 }
 .btnforFood {
-    background-color: #e64a19 ;
+    background-color: #FE5F55 ;
     color:black;
     margin-left: auto !important;
     margin-right:auto !important;
-    border-style: solid;
-    border-width: 2px;
+    border: 2px solid white;
     border-radius: 5px;
     text-align: center; 
 }
 .btnforStart{
-    background-color: #e64a19 ;
+    background-color: #FE5F55 ;
     color:black;
     margin-left: auto !important;
     margin-right:auto !important;
-    border-style: solid;
-    border-width: 2px;
+    border: 2px solid white;
     border-radius: 5px;
     text-align: center;   
 }
 .btmModal {
-    background-color: #e64a19 ;
+    background-color: #FE5F55 ;
     color:black;
-margin: 0 50px 0 50px;
-    border-style: solid;
-    border-width: 2px;
+    margin: 0 50px 0 50px;
+    border: 2px solid white;
     border-radius: 5px;
     text-align: center;  
 }
@@ -178,9 +169,9 @@ margin: 0 50px 0 50px;
     position: relative;
 }
 .wanttoReset{
-position: absolute;   
-left:30%;
-right:30%;
+ position: absolute;
+ left:50%;
+ transform:translateX(-50%);
 }
 #seeoldSearch{
     position: absolute;
@@ -257,22 +248,21 @@ tr:nth-child(even) {
 .btnforStart {
     position: relative;
     left:12.5%;
-    background-color: #e64a19 ;
+    background-color: #FE5F55 ;
     color:black;
     margin-left: auto !important;
     margin-right:auto !important;
-    border-style: solid;
-    border-width: 2px;
+    border: 2px solid;
     border-radius: 5px;
     text-align: center; 
 }
+
 .btnforFood {
-    background-color: #e64a19 ;
+    background-color: #FE5F55 ;
     color:black;
     margin-left: auto !important;
     margin-right:auto !important;
-    border-style: solid;
-    border-width: 2px;
+    border: 2px solid ;
     border-radius: 5px;
     text-align: center; 
 }
@@ -290,8 +280,23 @@ tr:nth-child(even) {
     height:320px; 
  }
  .wanttoReset{
-     position: relative;
-     left:13%;
- }
+    position: absolute;   
+    left:50%;
+    transform:translateX(-50%);
+    }
+#modalforTable{
+    margin:0 0 0 0;
+    width:100%;
+
+}
+.orthisTable{
+    margin:0 0 0 0;
+    width:100%;
+}
+.thisbetheTable {
+    margin:0 0 0 0;
+    width:100%;
+
+}
  
 }

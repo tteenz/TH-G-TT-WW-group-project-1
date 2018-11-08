@@ -1,140 +1,147 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <!-- Bootstrap -->
-        <link rel="stylesheet" href="assets/CSS/bootstrap/bootstrap.min.css">
-        <!-- Materialize -->
-        <link rel="stylesheet" href="assets/CSS/materilize/materialize.css">
-        <!-- our style sheet -->
-        <link rel="stylesheet" href="assets/CSS/style.css">                
-        <title>Finder: The Tinder of Food</title>
-    </head>   
-    <body> 
 
-        <!-- Modal -->
-        <div id="mymodalStart" class="modal fade mymodalStart" role="dialog">
-                <div class="modal-dialog dialogStart">
-                  <!-- Modal content-->
-                  <div class="modal-content contentStart">
-                    <div class="modal-header">
-                      
-                      <h4 class="modal-title forstartModal">Welcome to Finder!</h4>
-                    </div>
-                    <div class="modal-body">
-                      <p>Hey there! Welcome to Finder! A food finder for when you're hungry but don't know what for? It's pretty simple hit the button below and swipe select the food that looks good to you! In the end will show you the restraunts near you that meet your tummy's desire!</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" id="startbtnClose" class="btn btn-primary  btnforStart" data-dismiss="modal">What are you hungry for?</button>
-                    </div>
-                  </div>
-              
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="assets/CSS/bootstrap/bootstrap.min.css">
+
+    <!-- Materialize -->
+    <link rel="stylesheet" href="assets/CSS/materilize/materialize.css">
+
+    <!-- our style sheet -->
+    <link rel="stylesheet" href="assets/CSS/style.css">
+
+    <title>Fooder: The Tinder of Food</title>
+
+</head>
+
+<body>
+
+    <!-- Modal -->
+    <div id="mymodalStart" class="modal fade mymodalStart" role="dialog">
+        <div class="modal-dialog dialogStart">
+            <!-- Modal content-->
+            <div class="modal-content contentStart">
+                <div class="modal-header">
+
+                    <h4 class="modal-title forstartModal">Welcome to Fooder!</h4>
                 </div>
-              </div>
-         
-      
-      <!--headeer-->
-        <div class="container containHead #e64a19 deep-orange darken-2 z-depth-3">
-            <div class="col s12 ">
-                <h2>Finder</h2>
+                <div class="modal-body">
+                    <p>Hey there! Welcome to Fooder! A food finder for when you're hungry, but don't know what for?
+                        It's pretty simple, hit the button below and select the food that looks good to you! In the
+                        end, we'll show you restraunts nearby that'll meet your tummy's desire!</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="startbtnClose" class="btn btn-primary  btnforStart" data-dismiss="modal">What
+                        are you hungry for?</button>
+                </div>
             </div>
-            <!-- Page Content goes here -->
+
         </div>
-        <div class="container containMain #e64a19 deep-orange darken-2 z-depth-3">
-            <div class="col s12 #fafafa grey lighten-5 mainHolder" id="mainHolder">
+    </div>
 
-                <div class="container containImg">
-                    <div class="row rowforImg">
-                        <div class="col s4 imgholder  z-depth-3">
-                            <img id="leftImage" src="" alt="food">
-                            <h3 class="leftWord"></h3>
-                        </div>
 
-                        <div class="col s4 imgholder z-depth-3">
-                            <img id="rightImage" src="" alt="food">
-                            <h3 class="rightWord"></h3>
-                        </div>
-                    </div>
-
-                    <div class="container contsmallScreen">
-                        <div class="col s4 imgholder  z-depth-3">
-                            <img id="leftImage" src="" alt="food">
-                            <h3 class="rightWord"></h3>
-                        </div>
-
-                        <div class="col s4 imgholder z-depth-3">
-                            <img id="rightImage" src="" alt="food">
-                            <h3 class="leftWord"></h3>
-                        </div>
-                    </div>
-
-                    
-                </div>
-            </div>
-            <div class =row>
-                <div class ="col s4">
-                    <img id = "logo" src="assets/imagesexample/logo.png" alt ="logo">
-                </div>
-            </div>
-            
+    <!--headeer-->
+    <div class="container containHead #FE5F55 red   z-depth-3">
+        <div class="col s12 ">
+            <h2>Fooder</h2>
         </div>
+        <!-- Page Content goes here -->
+    </div>
+    <div class="container containMain #FE5F55 red   z-depth-3">
+        <div class="col s12 #fafafa grey lighten-5 mainHolder" id="mainHolder">
 
-        <div
-            class="modal fade bd-example-modal-lg backgroundImg"
-            id="Mymodal1"
-            tabindex="-1"
-            role="dialog"
-            aria-labelledby="myLargeModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog modal-lg dialogModal1">
-                <div class="modal-content contentModal1">
-
-                    <div class="modal-body forLocation">
-
-                        <br>
-                        <p>Getting your results!</p>
-                        <br>
-
-
-                        <br>
+            <div class="container containImg">
+                <div class="row rowforImg">
+                    <div class="col s4 imgholder  z-depth-3">
+                        <img id="leftImage" src="" alt="food">
+                        <h3 class="leftWord"></h3>
                     </div>
-                    <div class="modal-footer forCarosel">
-                        <button type="button" class="btn btn-primary  btnforFood" id ="btnforFood" data-dismiss="modal">Nothing Yet</button>
-                        
+
+                    <div class="col s4 imgholder z-depth-3">
+                        <img id="rightImage" src="" alt="food">
+                        <h3 class="rightWord"></h3>
                     </div>
                 </div>
+
+                <div class="container contsmallScreen">
+                    <div class="col s4 imgholder  z-depth-3">
+                        <img id="leftImage" src="" alt="food">
+                        <h3 class="rightWord"></h3>
+                    </div>
+
+                    <div class="col s4 imgholder z-depth-3">
+                        <img id="rightImage" src="" alt="food">
+                        <h3 class="leftWord"></h3>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+        <div class=row>
+            <div class="col s4">
+                <img id="logo" src="assets/imagesexample/logo.png" alt="logo">
             </div>
         </div>
 
-      <!-- Modal for table-->
-  <div id="modalforTable" class="modal">
-    <div class="modal-content modalthisTable">
-      <h4>Modal Header</h4>
-      <div class="display_data orthisTable">
-        <table id = "mytable" class="table thisbetheTable" >
-            <thead>
-              <tr>
-                <th scope="col">Restruant Name</th>
-                <th scope="col">Rating</th>
-                <th scope="col">Location</th>
-              </tr>
-            </thead>
-            <tbody>
-            </tbody>
-          </table>
     </div>
+
+    <div class="modal fade bd-example-modal-lg backgroundImg" id="Mymodal1" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg dialogModal1">
+            <div class="modal-content contentModal1">
+
+                <div class="modal-body forLocation">
+
+                    <br>
+                    <p>Getting your results!</p>
+                    <br>
+
+
+                    <br>
+                </div>
+                <div class="modal-footer forCarosel">
+                    <button type="button" class="btn btn-primary  btnforFood" id="btnforFood" data-dismiss="modal">Get my results!</button>
+
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="modal-footer footerbtmModal">
-            <button type="button" class="btn btn-primary modal-close waves-effect btmModal wanttoReset" id"wanttoReset" data-dismiss="modal">Nothing you like?</button>
-          <!--  <button type="button" class="btn btn-primary modal-close waves-effect btmModal seeoldSearch" id"seeoldSearch" data-dismiss="modal">See research searches?</button>-->
-                      
-    
+
+    <!-- Modal for table-->
+    <div id="modalforTable" class="modal">
+        <div class="modal-content modalthisTable">
+            <h4>Restruants near you</h4>
+            <div class="display_data orthisTable">
+                <table id="mytable" class="table thisbetheTable">
+                    <thead>
+                        <tr>
+                            <th scope="col">Restruant Name</th>
+                            <th scope="col">Rating</th>
+                            <th scope="col">Location</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="modal-footer footerbtmModal">
+            <button type="button" class="btn btn-primary modal-close waves-effect btmModal wanttoReset" id="wanttoReset"
+                data-dismiss="modal">Nothing you like?</button>
+            <!--  <button type="button" class="btn btn-primary modal-close waves-effect btmModal seeoldSearch" id"seeoldSearch" data-dismiss="modal">See research searches?</button>-->
+
+
+        </div>
     </div>
-  </div>
 
 </body>
+
 </html>
 <!-- jQuery-->
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
