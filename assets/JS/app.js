@@ -23,7 +23,7 @@ var ridWin = "";
 var lidWin = "";
 var foodArr = ["sushi", "pizza food", "mexican food", "italian food", "mediterranean food", "hibachi food", "healthy food", "burger", "chinese food", "korean food"];
 var cusineOb = {};
-var newArr = [];
+const newArr = [];
 var holderforNew = [1, 2, 3];
 var cuisineCont = {};
 var cusineNum = [];
@@ -35,8 +35,8 @@ var randomLFood = 0;
 var randomRFood = 0;
 var leftimgFood = '';
 var rightimgFood = '';
-var pusherLeft = [];
-var pusherRight = [];
+var pusherLeft = '';
+var pusherRight = '';
 var winner;
 
 // function deleter(){
@@ -65,22 +65,22 @@ function randomNum() {
         var lengthtoUse = newArr.length - 1;
 
         randomLFood = (Math.floor(Math.random() * lengthtoUse));
-        
-        
+        console.log(lengthtoUse);
+        console.log(randomLFood);
         leftimgFood = newArr[randomLFood].cus;
         pusherLeft = newArr.splice(randomLFood, 1);
-       // console.log("1st in L");
-       // console.log(newArr);
+        console.log("1st in L");
+        console.log(newArr);
         var lengthtoUse2 = newArr.length - 1;
 
 
-      //  console.log("before L")
-       // console.log(newArr);
-        //console.log(leftimgFood);
-      // grabImgL();//create imtopaste UNCOMMENT
-//
+        console.log("before L")
+        console.log(newArr);
+        console.log(leftimgFood);
+        grabImgL();//create imtopaste UNCOMMENT
+
         $(".leftWord").text(leftimgFood);
-        //$("#leftImage").attr("src", imgtopasteL.hits[0].largeImageURL); 
+        $("#leftImage").attr("src", imgtopasteL.hits[0].largeImageURL);
 
         lidWin = newArr[randomLFood].id;
         lnameWin = newArr[randomLFood].cus;
@@ -91,13 +91,13 @@ function randomNum() {
         pusherRight = newArr.splice(randomRFood, 1);
 
 
-      $(".rightWord").text(rightimgFood);
-        //console.log("before R")
-       // console.log(newArr);
-        console.log(rightimgFood); 
-      // grabImgR(); 
-      //  $("#rightImage").attr("src", imgtopasteR.hits[0].largeImageURL);
-      //  console.log(imgtopasteR.hits[0].largeImageURL); 
+        $(".rightWord").text(rightimgFood);
+        console.log("before R")
+        console.log(newArr);
+        console.log(rightimgFood);
+        grabImgR();
+        $("#rightImage").attr("src", imgtopasteR.hits[0].largeImageURL);
+        console.log(imgtopasteR.hits[0].largeImageURL);
         ridWin = newArr[randomRFood].id;
         rnameWin = newArr[randomRFood].cus;
 
@@ -109,7 +109,7 @@ function randomNum() {
 
     }
     console.log("afterboth");
-    
+    console.log(newArr);
 }
 
 function resetImages() {
@@ -120,34 +120,23 @@ function resetImages() {
 }
 
 function lFoodClick() {
-    console.log(newArr);
-    console.log(pusherLeft);
-  newArr =  newArr.concat(pusherLeft);
-   console.log(newArr);
+    newArr.concat(pusherLeft);
     winner = lidWin;
-  //  console.log(lidWin);
-
     cuisine_holder = winner;
-   // console.log(winner);
     cuisine_nameholder = lnameWin;
     $(".rightWord").text("");
     $(".leftWord").text("");
     $("#leftImage").attr("src", "");
     $("#rightImage").attr("src", "");
     setTimeout(randomNum, 100);
-    randomNum();
+    //randomNum();
     //resetImages();
 }
 
 function rFoodClick() {
-    console.log(newArr);
-    console.log(pusherRight);
-    newArr = newArr.concat(pusherRight);
-  console.log(newArr);
+    newArr.concat(pusherRight);
     winner = ridWin;
-   // console.log(ridWin);
     cuisine_holder = winner;
-   // console.log(winner);
     cuisine_nameholder = rnameWin;
     $(".rightWord").text("");
     $(".leftWord").text("");
@@ -179,12 +168,8 @@ $(document).on("click", "#startbtnClose", function () {
 
 });
 
-$(document).on("click", ".rightImage", function (){
-rFoodClick();
-});
-$(document).on("click", ".leftImage", function(){
-lFoodClick();
-});
+$(document).on("click", "#rightImage", rFoodClick);
+$(document).on("click", "#leftImage", lFoodClick);
 
 var access_key = '45163dc1f5e5d44d03509df23247aba3';
 
@@ -221,7 +206,7 @@ $(document).ready(function () {
 
 function grabImgL() {
     $.ajax({
-        url: "https://pixabay.com/api/?username=dabespishthing&key=10627645-90d2be0d94e4940ab741bc1a5&q=" + leftimgFood + "&image_type=photo&per_page=3&category=food",
+        url: "https://pixabay.com/api/?key=10654135-5f91e472fb3ae0cdbaf390193&q=" + leftimgFood + "&image_type=photo&per_page=3&category=food",
         async: false,
         success: function (responseL) {
 
@@ -234,17 +219,15 @@ function grabImgL() {
 
     })
     if (imgtopasteL.hits.length == 0) {
-        console.log(imgtopasteL);
-    }else {
         randomNum();
-    }
-    }
-
+    } else
+        console.log(imgtopasteL);
+}
 
 
 function grabImgR() {
     $.ajax({
-        url: "https://pixabay.com/api/?username=dabespishthing&key=10627645-90d2be0d94e4940ab741bc1a5&q=" + rightimgFood + "&image_type=photo&per_page=3&category=food",
+        url: "https://pixabay.com/api/?key=10654135-5f91e472fb3ae0cdbaf390193&q=" + rightimgFood + "&image_type=photo&per_page=3&category=food",
         async: false,
         success: function (responseR) {
 
@@ -255,13 +238,11 @@ function grabImgR() {
         }
     })
     if (imgtopasteR.hits.length == 0) {
-       console.log(imgtopasteR);
-    }else 
-    randomNum();
-
-    } 
-
-
+        randomNum();
+    } else { }
+    console.log(imgtopasteR)
+}
+console.log(imgtopasteR)
 
 
 function citysearch() {
@@ -362,7 +343,7 @@ function addtoTable() {
         var rName = $("<td>").text(listofrestraunts.restaurants[i].restaurant.name);
         var rRating = $("<td>").text(listofrestraunts.restaurants[i].restaurant.user_rating.aggregate_rating);
         var rLocation = $("<td>").text(listofrestraunts.restaurants[i].restaurant.location.address).addClass("mytableClicker").attr('id', i);
-        // var ID = $(this).attr('id',i);
+        var ID = $(this).attr('id', i);
         tr.append(rName);
         tr.append(rRating);
         tr.append(rLocation);
@@ -376,4 +357,8 @@ $(document).on("click", "#btnforFood", function () {
     addtoTable();
     $("#modalforTable").modal();
     $("#modalforTable").modal('open');
+});
+$(document).on("click", ".mytableClicker", function () {
+
+    console.log($(this));
 });
