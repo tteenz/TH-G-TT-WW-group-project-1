@@ -357,8 +357,11 @@ $(document).on("click", "#btnforFood", function () {
     addtoTable();
     $("#modalforTable").modal();
     $("#modalforTable").modal('open');
+
+
 });
 $(document).on("click", ".mytableClicker", function () {
 
     console.log($(this));
 });
+
