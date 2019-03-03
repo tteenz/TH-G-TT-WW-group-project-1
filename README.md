@@ -10,4 +10,4 @@ Once you click GRUB ON, a list of restaurant based on your type of food selectio
 
 If there is nothing you like, you can restart the app and go through the process again!
 
-Visit https://tteenz.github.io/TH-G-TT-WW-group-project-1/ to check our application!
+Visit https://tteenz.github.io/TH-G-TT-WW-group-project-1/ to check our application!!
